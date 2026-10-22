@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Enterprises | Pure Hygiene, Maximum Shine</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff9fc',
+                            100: '#daf1f8',
+                            200: '#b9e4f2',
+                            500: '#0284c7', // vibrant cyan/blue
+                            600: '#0369a1',
+                            700: '#075985',
+                        },
+                        mint: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Top Info Bar -->
+    <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-teal-700 text-white text-xs sm:text-sm py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-emerald-300"></i> ISO Compliant & Eco-friendly Formulas</span>
+                <span class="hidden md:inline text-slate-300">|</span>
+                <span class="hidden md:flex items-center gap-1.5"><i data-lucide="truck" class="w-4 h-4 text-amber-300"></i> Wholesale & Bulk Supply Available Across India</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+919876543210" class="hover:text-emerald-200 transition-colors flex items-center gap-1">
+                    <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> +91 98765 43210
+                </a>
+                <span class="text-slate-300">|</span>
+                <span class="text-xs bg-emerald-500/20 text-emerald-200 px-2 py-0.5 rounded-full font-medium border border-emerald-400/30">Direct Manufacturer</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 block leading-tight">
+                        MAX <span class="text-brand-600">ENTERPRISES</span>
+                    </span>
+                    <span class="text-[11px] font-semibold tracking-wider uppercase text-teal-600 block">Pure Hygiene • Maximum Shine</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-600">
+                <a href="#home" class="hover:text-brand-600 transition-colors">Home</a>
+                <a href="#about" class="hover:text-brand-600 transition-colors">About Us</a>
+                <a href="#products" class="hover:text-brand-600 transition-colors">Products</a>
+                <a href="#why-us" class="hover:text-brand-600 transition-colors">Why Choose Us</a>
+                <a href="#testimonials" class="hover:text-brand-600 transition-colors">Client Reviews</a>
+                <a href="#contact" class="hover:text-brand-600 transition-colors">Bulk Inquiry</a>
+            </nav>
+
+            <!-- Quick Action CTA -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="#products" class="px-4 py-2 text-sm font-semibold text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-lg transition-colors border border-brand-200">
+                    View Catalog
+                </a>
+                <button onclick="openWhatsAppModal()" class="px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    WhatsApp Order
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-5 space-y-3 shadow-lg">
+            <a href="#home" class="block py-2 text-slate-700 font-medium hover:text-brand-600" onclick="toggleMobileMenu()">Home</a>
+            <a href="#about" class="block py-2 text-slate-700 font-medium hover:text-brand-600" onclick="toggleMobileMenu()">About Us</a>
+            <a href="#products" class="block py-2 text-slate-700 font-medium hover:text-brand-600" onclick="toggleMobileMenu()">Products</a>
+            <a href="#why-us" class="block py-2 text-slate-700 font-medium hover:text-brand-600" onclick="toggleMobileMenu()">Why Choose Us</a>
+            <a href="#contact" class="block py-2 text-slate-700 font-medium hover:text-brand-600" onclick="toggleMobileMenu()">Bulk Inquiry</a>
+            <button onclick="openWhatsAppModal(); toggleMobileMenu();" class="w-full mt-2 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg text-center flex justify-center items-center gap-2">
+                <i data-lucide="message-circle" class="w-5 h-5"></i> Quick WhatsApp Order
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="home" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-50/70 via-white to-slate-50">
+            <!-- Decorative Background Blobs -->
+            <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 -right-32 w-96 h-96 bg-teal-200/40 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs sm:text-sm font-semibold tracking-wide border border-emerald-300">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            Trusted Commercial & Household Cleaning Range
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                            Pure Hygiene, <br class="hidden sm:inline" />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-teal-600 to-emerald-600">Maximum Shine.</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Max Enterprises supplies high-potency, safe, and hospital-grade cleaning liquids. From concentrated white phenyl and degreasing dishwash gels to sparkling floor & glass cleaners — available in retail & wholesale bulk packs.
+                        </p>
+
+                        <!-- CTA Row -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#products" class="w-full sm:w-auto px-7 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-lg shadow-brand-500/25 transition-all text-center flex items-center justify-center gap-2">
+                                <i data-lucide="package-search" class="w-5 h-5"></i>
+                                Explore Catalog
+                            </a>
+                            <button onclick="openWhatsAppModal()" class="w-full sm:w-auto px-7 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md shadow-emerald-600/20 transition-all text-center flex items-center justify-center gap-2">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                                Order via WhatsApp
+                            </button>
+                        </div>
+
+                        <!-- Highlights Badges -->
+                        <div class="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center sm:text-left">
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-900">99.9%</h3>
+                                <p class="text-xs text-slate-500 font-medium">Germ & Bacteria Kill</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-900">500+</h3>
+                                <p class="text-xs text-slate-500 font-medium">B2B Clients & Offices</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-900">Direct</h3>
+                                <p class="text-xs text-slate-500 font-medium">Wholesale Pricing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Visual Card -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-500 p-1 shadow-2xl">
+                            <div class="bg-white rounded-[15px] p-6 sm:p-8 space-y-6">
+                                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                                    <span class="text-xs uppercase font-bold tracking-wider text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">Best Seller Cans</span>
+                                    <div class="flex text-amber-400">
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Feature Product Visual Representation (SVG Graphics) -->
+                                <div class="h-56 bg-gradient-to-b from-brand-50 to-slate-100 rounded-xl flex items-center justify-center relative overflow-hidden border border-brand-100/60 p-4">
+                                    <!-- Dynamic Animated cleaning illustration -->
+                                    <div class="flex items-end justify-center gap-4">
+                                        <!-- Floor Cleaner Bottle SVG -->
+                                        <div class="text-center group">
+                                            <div class="w-16 h-28 bg-emerald-500 rounded-t-lg rounded-b-xl relative shadow-md flex items-center justify-center text-white font-bold text-xs">
+                                                <div class="absolute -top-3 w-6 h-3 bg-slate-700 rounded-t-sm"></div>
+                                                <div class="text-center leading-none">
+                                                    <i data-lucide="shield" class="w-5 h-5 mx-auto mb-1"></i>
+                                                    Phenyl
+                                                </div>
+                                            </div>
+                                            <span class="text-[10px] font-semibold text-slate-600 mt-1 block">Pine / Herbal</span>
+                                        </div>
+                                        <!-- Main 5L Bulk Canister SVG -->
+                                        <div class="text-center">
+                                            <div class="w-24 h-36 bg-brand-600 rounded-t-xl rounded-b-2xl relative shadow-lg flex flex-col items-center justify-center text-white font-bold text-xs">
+                                                <div class="absolute -top-3 w-8 h-3 bg-amber-400 rounded-t-sm"></div>
+                                                <div class="w-5 h-8 border-2 border-white rounded-r-md absolute -left-5 top-8"></div>
+                                                <i data-lucide="sparkles" class="w-6 h-6 mb-1 text-teal-200"></i>
+                                                <span class="text-xs uppercase tracking-wider font-extrabold">MAX 5L</span>
+                                                <span class="text-[10px] font-normal text-brand-100">Floor Disinfectant</span>
+                                            </div>
+                                            <span class="text-[11px] font-bold text-brand-700 mt-1 block">5 Litre Economy</span>
+                                        </div>
+                                        <!-- Dishwash Gel SVG -->
+                                        <div class="text-center">
+                                            <div class="w-14 h-24 bg-amber-500 rounded-t-full rounded-b-lg relative shadow-md flex items-center justify-center text-white font-bold text-xs">
+                                                <div class="absolute -top-2 w-4 h-2 bg-slate-800"></div>
+                                                <div class="text-center leading-none">
+                                                    <i data-lucide="droplet" class="w-4 h-4 mx-auto mb-0.5"></i>
+                                                    Dishwash
+                                                </div>
+                                            </div>
+                                            <span class="text-[10px] font-semibold text-slate-600 mt-1 block">Lime Cut</span>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur-xs px-2 py-1 rounded text-[11px] font-bold text-slate-700 shadow-xs">
+                                        500ml | 1L | 5L
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2 text-sm text-slate-600">
+                                    <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Concentrated formula for maximum savings</div>
+                                    <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Pleasant long-lasting pine, lemon & citrus fragrance</div>
+                                    <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Perfect for Tiles, Granite, Marble & Ceramics</div>
+                                </div>
+
+                                <button onclick="selectProductToOrder('Floor Cleaner 5L Can')" class="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="shopping-bag" class="w-4 h-4"></i> Instant Quote for 5L Cans
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 bg-white border-y border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">About Max Enterprises</span>
+                        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                            Elevating Cleanliness with Scientific & Reliable Hygiene Formulations
+                        </h2>
+                        <p class="mt-4 text-slate-600 text-base leading-relaxed">
+                            Established with the vision to deliver hospital-grade cleanliness at fair pricing, <strong>Max Enterprises</strong> is a premier manufacturer and distributor of hygiene essentials. We formulate heavy-duty cleaners that eliminate grease, grime, and hazardous pathogens without harming your surfaces or hands.
+                        </p>
+                        <p class="mt-3 text-slate-600 text-base leading-relaxed">
+                            Whether you need daily cleaning solutions for households or high-volume wholesale supplies for corporate complexes, hotels, clinics, schools, and banquet halls, we provide tailored bulk packaging with guaranteed quality consistency.
+                        </p>
+
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-emerald-100 text-emerald-700 shrink-0">
+                                    <i data-lucide="leaf" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Eco-Conscious</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">Non-corrosive, skin-friendly, safe drainage chemicals.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                                <div class="p-2 rounded-lg bg-brand-100 text-brand-700 shrink-0">
+                                    <i data-lucide="building-2" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Bulk Institutional Supply</h4>
+                                    <p class="text-xs text-slate-500 mt-0.5">5L to 50L bulk containers for commercial organizations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Supply Segments Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-brand-50 to-white p-6 rounded-2xl border border-brand-100 text-center shadow-xs">
+                            <div class="w-12 h-12 mx-auto bg-brand-600 text-white rounded-xl flex items-center justify-center mb-3">
+                                <i data-lucide="home" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">Residential Homes</h3>
+                            <p class="text-xs text-slate-500 mt-1">Safe for homes with pets and toddlers. Fresh aroma.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-teal-50 to-white p-6 rounded-2xl border border-teal-100 text-center shadow-xs">
+                            <div class="w-12 h-12 mx-auto bg-teal-600 text-white rounded-xl flex items-center justify-center mb-3">
+                                <i data-lucide="hospital" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">Hospitals & Clinics</h3>
+                            <p class="text-xs text-slate-500 mt-1">Medical grade disinfection against bacteria and viruses.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl border border-indigo-100 text-center shadow-xs">
+                            <div class="w-12 h-12 mx-auto bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-3">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">Offices & IT Parks</h3>
+                            <p class="text-xs text-slate-500 mt-1">Cost-effective bulk packaging for daily facility cleaning.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl border border-amber-100 text-center shadow-xs">
+                            <div class="w-12 h-12 mx-auto bg-amber-600 text-white rounded-xl flex items-center justify-center mb-3">
+                                <i data-lucide="utensils" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900">Hotels & Restaurants</h3>
+                            <p class="text-xs text-slate-500 mt-1">Heavy degreaser dishwash liquids and sparkling glass polish.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Catalog Section -->
+        <section id="products" class="py-16 lg:py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Catalog Header -->
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-100/70 px-3 py-1 rounded-full border border-brand-200">
+                        Our Production Portfolio
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Premium Cleaning & Hygiene Supplies
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base">
+                        Select an item below to check specifications or directly place an order/inquiry via WhatsApp.
+                    </p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8 mb-10">
+                    <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm" onclick="filterProducts('all', this)">
+                        All Products
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" onclick="filterProducts('floor', this)">
+                        Phenyl & Floor Care
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" onclick="filterProducts('kitchen', this)">
+                        Dishwash & Kitchen
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" onclick="filterProducts('bathroom', this)">
+                        Toilet & Bathroom
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" onclick="filterProducts('glass', this)">
+                        Glass & Multi-Surface
+                    </button>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards will be populated by JS for instant rendering & easy management -->
+                </div>
+
+                <!-- Bulk Catalog Download / Inquiry CTA Banner -->
+                <div class="mt-14 bg-gradient-to-r from-brand-700 to-teal-700 rounded-2xl p-6 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2 text-center md:text-left">
+                        <h3 class="text-xl sm:text-2xl font-bold">Need Custom White-labeling or 50L Drum Rates?</h3>
+                        <p class="text-slate-200 text-sm max-w-xl">We provide customized fragrance, packaging, and commercial wholesale contracts for dealers, schools, and facility management firms.</p>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                        <a href="#contact" class="px-5 py-3 rounded-xl bg-white text-brand-700 font-bold hover:bg-slate-100 transition shadow">
+                            Request Wholesale Rate Card
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Max Enterprises -->
+        <section id="why-us" class="py-16 bg-white border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Competitive Advantage</span>
+                    <h2 class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Why Partner with Max Enterprises?</h2>
+                    <p class="text-slate-600 text-sm mt-2">Engineered formulas designed to give commercial results while keeping operational costs low.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="tag" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg">Direct Factory Rates</h3>
+                        <p class="text-slate-600 text-sm mt-2">Skip middleman margins. Enjoy genuine manufacturer prices on retail & 5-liter wholesale packages.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg">High Concentration</h3>
+                        <p class="text-slate-600 text-sm mt-2">Just 1 capful creates buckets of disinfecting wash. Long lasting and cost efficient for daily operations.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg">Standard Batch Quality</h3>
+                        <p class="text-slate-600 text-sm mt-2">Zero compromise on viscosity, cleaning power, and smell. Strict laboratory quality checks on every batch.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 hover:shadow-md transition">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center mb-4">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-lg">Fast Dispatch & Support</h3>
+                        <p class="text-slate-600 text-sm mt-2">Prompt dispatch on bulk purchase orders with dedicated WhatsApp assistance for recurring restocks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-100 px-3 py-1 rounded-full">Client Experiences</span>
+                    <h2 class="mt-2 text-3xl font-extrabold text-slate-900 tracking-tight">Trusted by Facilities & Retailers</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 mb-3">
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic">
+                                "We run a banquet hall and commercial kitchen. The 5L Lemon Dishwash liquid and Floor Disinfectant from Max Enterprises have cut our cleaning chemical expenses by nearly 35% without degrading shine."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-sm">
+                                RK
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Rajesh Kumar</h4>
+                                <p class="text-xs text-slate-500">Facility Manager, Grand Residency</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 mb-3">
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic">
+                                "Their herbal white phenyl has a genuinely pleasant pine scent that stays for hours. Our hospital wards stay sanitized and smelling fresh without overpowering fumes."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm">
+                                AS
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Dr. Amit Sharma</h4>
+                                <p class="text-xs text-slate-500">City Lifeline Clinic</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-amber-400 mb-3">
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            </div>
+                            <p class="text-slate-600 text-sm italic">
+                                "Fast order placement via WhatsApp and prompt door delivery for our grocery store network. Good margins for distributors and high repeat purchases from customers."
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">
+                                VS
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Vikas Singh</h4>
+                                <p class="text-xs text-slate-500">Retail Wholesaler & Distributor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bulk Inquiry / Contact Form Section -->
+        <section id="contact" class="py-16 lg:py-24 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-50 via-brand-50/30 to-teal-50/30 rounded-3xl p-6 sm:p-12 border border-slate-200 shadow-lg">
+                    <div class="text-center max-w-xl mx-auto mb-10">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-3 py-1 rounded-full">Wholesale & Dealership</span>
+                        <h2 class="mt-2 text-3xl font-extrabold text-slate-900">Get a Custom Bulk Quote</h2>
+                        <p class="text-slate-600 text-sm mt-1">Fill out the form below or talk directly to our supply team. We respond within 2-4 business hours.</p>
+                    </div>
+
+                    <form id="bulkInquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Your Full Name *</label>
+                                <input type="text" id="contactName" required placeholder="e.g. Ramesh Patel" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone / WhatsApp Number *</label>
+                                <input type="tel" id="contactPhone" required placeholder="e.g. +91 9876543210" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">City & State *</label>
+                                <input type="text" id="contactCity" required placeholder="e.g. Mumbai, Maharashtra" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Interested Products</label>
+                                <select id="contactProductInterest" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white">
+                                    <option value="All Products / General Inquiry">All Cleaning Range (Catalogue)</option>
+                                    <option value="White Phenyl / Herbal Disinfectant">White & Herbal Phenyl</option>
+                                    <option value="Dishwash Gel Bulk Cans">Dishwash Gel (500ml / 5L)</option>
+                                    <option value="Toilet Cleaner & Bathroom Cleaner">Toilet Cleaner</option>
+                                    <option value="Glass & Multi-surface Cleaner">Glass & Surface Cleaner</option>
+                                    <option value="Liquid Detergent & Fabric Care">Liquid Detergent</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Estimated Quantity / Requirement Details</label>
+                            <textarea id="contactRequirement" rows="3" placeholder="e.g. Need 20 cans of 5L floor cleaner & 10 cans of dishwash every month for our school." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <button type="submit" class="w-full sm:flex-1 py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold transition shadow-md flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit Inquiry
+                            </button>
+                            <button type="button" onclick="sendInquiryViaWhatsApp()" class="w-full sm:w-auto py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition shadow-md flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> Send on WhatsApp Instantly
+                            </button>
+                        </div>
+
+                        <!-- Form Feedback Box -->
+                        <div id="formSuccessMessage" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-sm text-center">
+                            Thank you! Your inquiry has been logged. Our Max Enterprises sales manager will reach out shortly.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 pt-14 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+                <!-- Col 1: About -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center text-white">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xl font-extrabold text-white">MAX ENTERPRISES</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Manufacturers and suppliers of heavy-duty disinfectant floor cleaners, dishwash gels, herbal white phenyl, and comprehensive hygiene solutions for residential and commercial establishments.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs text-emerald-400">
+                        <i data-lucide="check" class="w-4 h-4"></i> Certified High-Potency Formulation
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Quick Navigation</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Our Facility</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Product Catalogue</a></li>
+                        <li><a href="#why-us" class="hover:text-white transition-colors">Wholesale Benefits</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Bulk Order Form</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Product Range -->
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Our Key Range</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>• White & Herbal Pine Phenyl</li>
+                        <li>• Lemon Degreaser Dishwash Gel</li>
+                        <li>• Disinfectant Surface Cleaner</li>
+                        <li>• Heavy Stain Toilet Cleaner</li>
+                        <li>• Streak-free Glass Polish</li>
+                        <li>• Automatic Washing Detergent</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact info -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4">Contact Max Enterprises</h4>
+                    <div class="flex items-start gap-3 text-sm">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5"></i>
+                        <span class="text-slate-400">Industrial Area, Phase 2, Near Main Transport Nagar, India</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-400 shrink-0"></i>
+                        <a href="tel:+919876543210" class="text-slate-400 hover:text-white">+91 98765 43210</a>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm">
+                        <i data-lucide="mail" class="w-4 h-4 text-brand-400 shrink-0"></i>
+                        <span class="text-slate-400">sales@maxenterprises.in</span>
+                    </div>
+                    <div class="pt-2">
+                        <button onclick="openWhatsAppModal()" class="w-full py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold flex items-center justify-center gap-2">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> Direct WhatsApp Helpline
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+                <p>© <span id="currentYear"></span> Max Enterprises. All rights reserved.</p>
+                <p>Pure Hygiene, Maximum Shine. Built for cleanliness & health.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="openWhatsAppModal()" class="group flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            </span>
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+            <span class="font-semibold text-sm hidden md:inline">Order / Chat on WhatsApp</span>
+        </button>
+    </div>
+
+    <!-- Direct WhatsApp Order Modal -->
+    <div id="whatsappModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-100">
+            <!-- Modal Close -->
+            <button onclick="closeWhatsAppModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base">Quick WhatsApp Order</h3>
+                    <p class="text-xs text-slate-500">Max Enterprises Official Sales Desk</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Selected Product</label>
+                    <select id="modalProduct" class="w-full text-sm p-2.5 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white focus:ring-1 focus:ring-brand-500">
+                        <option value="Multi-Surface Disinfectant Floor Cleaner">Multi-Surface Disinfectant Floor Cleaner</option>
+                        <option value="Premium Herbal White Phenyl">Premium Herbal White Phenyl</option>
+                        <option value="Lemon Action Dishwash Gel">Lemon Action Dishwash Gel</option>
+                        <option value="Ultra Power Toilet Cleaner">Ultra Power Toilet Cleaner</option>
+                        <option value="Streak-Free Glass & Window Cleaner">Streak-Free Glass Cleaner</option>
+                        <option value="Fabric Care Liquid Detergent">Fabric Care Liquid Detergent</option>
+                        <option value="Bulk Pack Mixed Assortment">Multiple Items / Wholesale Catalog</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Pack Size</label>
+                        <select id="modalSize" class="w-full text-sm p-2.5 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white">
+                            <option value="5 Litre Bulk Can (Most Popular)">5L Bulk Can</option>
+                            <option value="1 Litre Bottle">1L Bottle</option>
+                            <option value="500 ml Bottle">500ml Bottle</option>
+                            <option value="50 Litre Barrel (Industrial)">50L Drum</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Quantity</label>
+                        <input type="text" id="modalQty" value="5 Cans" placeholder="e.g. 10 Cans" class="w-full text-sm p-2.5 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Your Delivery City</label>
+                    <input type="text" id="modalLocation" placeholder="e.g. Jaipur, Rajasthan" class="w-full text-sm p-2.5 border border-slate-300 rounded-lg bg-slate-50 focus:bg-white">
+                </div>
+
+                <button onclick="launchWhatsAppOrder()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i> Open WhatsApp with Order
+                </button>
+                <p class="text-[11px] text-center text-slate-400">
+                    You will be redirected directly to WhatsApp with pre-filled order details.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Dynamic Interactions -->
+    <script>
+        // Company WhatsApp Target Number (Replace with actual phone digits)
+        const WHATSAPP_PHONE = "919876543210";
+
+        // Current Year in Footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Product Catalog Data
+        const productsData = [
+            {
+                id: 1,
+                category: 'floor',
+                name: 'Multi-Surface Disinfectant Floor Cleaner',
+                badge: 'Fast Moving',
+                badgeColor: 'bg-brand-100 text-brand-700',
+                desc: 'Cleans stubborn floor grease, grime, and kills 99.9% germs. Leaves a fresh citrus breeze for hours.',
+                sizes: ['500 ml', '1 Litre', '5 Litre Can'],
+                features: ['Safe on Marble & Granite', 'Triple Action Cleaning', 'Concentrated Form'],
+                icon: 'sparkles',
+                color: 'from-blue-500 to-cyan-500'
+            },
+            {
+                id: 2,
+                category: 'floor',
+                name: 'Herbal White & Pine Phenyl',
+                badge: 'Eco Safe',
+                badgeColor: 'bg-emerald-100 text-emerald-700',
+                desc: 'Traditional high-emulsion white phenyl with natural pine extracts. Deodorizes instantly while keeping insects away.',
+                sizes: ['1 Litre', '5 Litre Can', '50 Litre Drum'],
+                features: ['Thick Emulsion Formula', 'Long-lasting Pine Scent', 'Repels flies & pests'],
+                icon: 'shield-check',
+                color: 'from-emerald-500 to-teal-500'
+            },
+            {
+                id: 3,
+                category: 'kitchen',
+                name: 'Lemon Cut Dishwash Gel',
+                badge: 'Tough on Oil',
+                badgeColor: 'bg-amber-100 text-amber-800',
+                desc: 'Powerful grease-cutting liquid enriched with lemon enzymes. Removes burnt food marks without leaving a powdery white residue.',
+                sizes: ['250 ml', '500 ml', '5 Litre Bulk'],
+                features: ['Gentle on skin / hands', 'Sparkling shine on glassware', 'High foaming liquid'],
+                icon: 'droplets',
+                color: 'from-yellow-500 to-amber-500'
+            },
+            {
+                id: 4,
+                category: 'bathroom',
+                name: 'Ultra Power Toilet Bowl Cleaner',
+                badge: 'Heavy Duty',
+                badgeColor: 'bg-blue-100 text-blue-700',
+                desc: 'Thick blue formula that adheres to curved toilet surfaces to dissolve yellow limescale, watermarks, and odor.',
+                sizes: ['500 ml', '1 Litre', '5 Litre Can'],
+                features: ['Kills tough pathogens', 'Removes 100% hard water scale', 'Angled nozzle design'],
+                icon: 'shield',
+                color: 'from-indigo-600 to-blue-600'
+            },
+            {
+                id: 5,
+                category: 'glass',
+                name: 'Streak-Free Glass & Multi-Surface Cleaner',
+                badge: 'Crystal Clarity',
+                badgeColor: 'bg-sky-100 text-sky-800',
+                desc: 'Instant spray-and-wipe polish for mirrors, car windshields, television screens, and kitchen glass countertops.',
+                sizes: ['500 ml Spray', '5 Litre Refill Can'],
+                features: ['Zero streak residue', 'Quick drying solvent', 'Repels dust particles'],
+                icon: 'sun',
+                color: 'from-sky-500 to-blue-400'
+            },
+            {
+                id: 6,
+                category: 'kitchen',
+                name: 'Concentrated Fabric Care Liquid Detergent',
+                badge: 'Fabric Friendly',
+                badgeColor: 'bg-purple-100 text-purple-700',
+                desc: 'Specially engineered for top load and front load washing machines. Preserves color while removing heavy collar stains.',
+                sizes: ['1 Litre Bottle', '5 Litre Bulk Can'],
+                features: ['Low foaming for machines', 'Conditioner built-in', 'Crisp fresh fragrance'],
+                icon: 'shirt',
+                color: 'from-purple-500 to-indigo-500'
+            }
+        ];
+
+        // Render Product Cards
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = items.map(p => `
+                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="p-6">
+                        <!-- Top Icon Header Banner -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr ${p.color} text-white flex items-center justify-center shadow-md">
+                                <i data-lucide="${p.icon}" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-md ${p.badgeColor}">${p.badge}</span>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                            ${p.name}
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+                            ${p.desc}
+                        </p>
+
+                        <!-- Available sizes tags -->
+                        <div class="mt-4 pt-3 border-t border-slate-100">
+                            <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">Pack Sizes Available:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${p.sizes.map(size => `
+                                    <span class="text-xs px-2.5 py-1 bg-slate-100 text-slate-700 font-medium rounded-md border border-slate-200">
+                                        ${size}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Highlights List -->
+                        <div class="mt-4 space-y-1.5">
+                            ${p.features.map(f => `
+                                <div class="text-xs text-slate-600 flex items-center gap-1.5">
+                                    <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> ${f}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Footer Action -->
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center gap-2">
+                        <button onclick="selectProductToOrder('${p.name}')" class="flex-1 py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-1.5">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> Order via WhatsApp
+                        </button>
+                        <a href="#contact" class="p-2.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-lg text-xs font-semibold transition" title="Get Bulk Quote">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+
+            // Re-initialize Lucide Icons after dynamic rendering
+            lucide.createIcons();
+        }
+
+        // Product Filter Handler
+        function filterProducts(category, btnElement) {
+            // Update Active Tab Button Styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200';
+            });
+            btnElement.className = 'filter-btn active px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm';
+
+            if (category === 'all') {
+                renderProducts(productsData);
+            } else {
+                const filtered = productsData.filter(item => item.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // WhatsApp Modal Trigger
+        function openWhatsAppModal() {
+            document.getElementById('whatsappModal').classList.remove('hidden');
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('whatsappModal').classList.add('hidden');
+        }
+
+        // Pre-select product when clicking directly from a card
+        function selectProductToOrder(productName) {
+            const select = document.getElementById('modalProduct');
+            // Check if option exists or set first
+            let optionFound = false;
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].text.includes(productName) || productName.includes(select.options[i].value)) {
+                    select.selectedIndex = i;
+                    optionFound = true;
+                    break;
+                }
+            }
+            if(!optionFound) {
+                select.value = productName;
+            }
+            openWhatsAppModal();
+        }
+
+        // WhatsApp Link Generator
+        function launchWhatsAppOrder() {
+            const product = document.getElementById('modalProduct').value;
+            const size = document.getElementById('modalSize').value;
+            const qty = document.getElementById('modalQty').value || 'Not specified';
+            const location = document.getElementById('modalLocation').value || 'Not specified';
+
+            const message = `*New Order Inquiry - Max Enterprises*%0A%0A` +
+                            `*Product:* ${encodeURIComponent(product)}%0A` +
+                            `*Pack Size:* ${encodeURIComponent(size)}%0A` +
+                            `*Quantity:* ${encodeURIComponent(qty)}%0A` +
+                            `*Delivery City:* ${encodeURIComponent(location)}%0A%0A` +
+                            `Hello, I would like to get pricing and delivery details for this requirement.`;
+
+            const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+            closeWhatsAppModal();
+        }
+
+        // Inquiry Form via Direct WhatsApp
+        function sendInquiryViaWhatsApp() {
+            const name = document.getElementById('contactName').value || 'Customer';
+            const phone = document.getElementById('contactPhone').value || '-';
+            const city = document.getElementById('contactCity').value || '-';
+            const product = document.getElementById('contactProductInterest').value;
+            const req = document.getElementById('contactRequirement').value || 'Need catalog and rates';
+
+            const message = `*Bulk Supply Inquiry - Max Enterprises*%0A%0A` +
+                            `*Name:* ${encodeURIComponent(name)}%0A` +
+                            `*Contact Phone:* ${encodeURIComponent(phone)}%0A` +
+                            `*Location:* ${encodeURIComponent(city)}%0A` +
+                            `*Product Interest:* ${encodeURIComponent(product)}%0A` +
+                            `*Requirement Note:* ${encodeURIComponent(req)}`;
+
+            window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${message}`, '_blank');
+        }
+
+        // Standard Form Submission Feedback
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const successBox = document.getElementById('formSuccessMessage');
+            successBox.classList.remove('hidden');
+            // Clear inputs
+            setTimeout(() => {
+                document.getElementById('bulkInquiryForm').reset();
+            }, 1000);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(productsData);
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
